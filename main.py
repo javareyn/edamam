@@ -18,11 +18,13 @@ Please choose a number: '''
 
 
 def create_url(endpoint):
-    return f'{BASE_URL}{endpoint}?app_id={NUTRITION_APP_ID}&app_key={NUTRITION_APP_KEY}'
+    return f'{BASE_URL}{endpoint}' \
+           f'?app_id={NUTRITION_APP_ID}' \
+           f'&app_key={NUTRITION_APP_KEY}'
 
 
 def fetch_response():
-    while (user_input := input(MENU_PROMPT)) != '3':
+    while (user_input:=input(MENU_PROMPT)) != '3':
         if user_input == '1':
             headers = {
                 'Content-Type': 'application/json'
