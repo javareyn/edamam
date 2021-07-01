@@ -11,3 +11,6 @@ Requests only made with one food item
 * REFACTOR
 * try-except
 * Structure the values in pandas
+
+## Credits
+https://developer.edamam.com/edamam-docs-nutrition-api
