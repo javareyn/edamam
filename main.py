@@ -1,5 +1,7 @@
 import requests
 import json
+import pandas as pd
+
 
 NUTRITION_APP_ID = 'a409daa4'
 NUTRITION_APP_KEY = 'ca9c243e5f2d70cff4d6a4997ea55d83'
@@ -50,6 +52,7 @@ def fetch_response():
             print(json.dumps(nut_facts, indent=4))
             print(nut_facts.keys())
             print(json.dumps(nut_facts['totalNutrients']['SUGAR'], indent=4))
+            return nut_facts
         elif user_input == '2':
             food = \
                 input('Which food would you like nutritional analysis for: ')
@@ -57,8 +60,28 @@ def fetch_response():
                   f'&nutrition-type=logging&ingr={food}'
             response = requests.get(url)
             print(response.json())
+            return response.json()
         else:
             print('Invalid, input. Please choose a number in the menu!')
+
+
+nut_facts = fetch_response()
+data = {
+    'FATS': [
+        nut_facts['totalNutrients']['FAT']['quantity'],
+        nut_facts['totalNutrients']['FAT']['unit']
+    ],
+    'CARBS': [
+        nut_facts['totalNutrients']['CHOCDF']['quantity'],
+        nut_facts['totalNutrients']['CHOCDF']['unit']
+    ],
+    'PROTEINS': [
+        nut_facts['totalNutrients']['PROCNT']['quantity'],
+        nut_facts['totalNutrients']['PROCNT']['unit']
+    ]
+}
+
+print(pd.DataFrame.from_dict(data))
 
 
 fetch_response()
@@ -67,8 +90,11 @@ fetch_response()
 # TODO: try-except
 # TODO: Structure the values in pandas
 # import pandas as pd
-# pd.DataFrame(nut_facts['totalNutrients'])
-# pd.DataFrame(nut_facts['totalNutrients']).transpose()
+pd.DataFrame(nut_facts['totalNutrients'])
+pd.DataFrame(nut_facts['totalNutrients']).transpose()
 # Transport to CSV in directory
-# trans = pd.DataFrame(nut_facts['totalNutrients']).transpose()
-# trans.to_csv('nut_facts.csv')
+trans = pd.DataFrame(nut_facts['totalNutrients']).transpose()
+trans.to_csv('nut_facts.csv')
+
+trans = pd.DataFrame.from_dict(data)
+trans.to_csv('egg_macros_test.csv')
