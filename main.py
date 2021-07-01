@@ -24,7 +24,7 @@ def create_url(endpoint):
 
 
 def fetch_response():
-    while (user_input:=input(MENU_PROMPT)) != '3':
+    while (user_input := input(MENU_PROMPT)) != '3':
         if user_input == '1':
             headers = {
                 'Content-Type': 'application/json'
@@ -32,7 +32,8 @@ def fetch_response():
 
             recipe = {
                 'title': input('What is the title of your dish? '),
-                'ingr': [item for item in input('Please enter your items separated by a comma: ').split(',')]
+                'ingr': [item for item in
+                         input('Please enter your items separated by a comma: ').split(',')]
             }
 
             # url = f'{BASE_URL}{NUTRITION_POST_ENDPOINT}?app_id={NUTRITION_APP_ID}&app_key={NUTRITION_APP_KEY}'
