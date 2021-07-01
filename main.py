@@ -66,7 +66,8 @@ def fetch_response():
 
 
 nut_facts = fetch_response()
-data = {
+
+macro_data = {
     'FATS': [
         nut_facts['totalNutrients']['FAT']['quantity'],
         nut_facts['totalNutrients']['FAT']['unit']
@@ -81,20 +82,15 @@ data = {
     ]
 }
 
-print(pd.DataFrame.from_dict(data))
+
+# Transport to CSV in directory
+def transport_df_to_csv(data):
+    trans = pd.DataFrame.from_dict(data)
+    file_name = input('Name your .csv file: ')
+    trans.to_csv(f'{file_name}.csv')
 
 
-fetch_response()
+transport_df_to_csv(macro_data)
 
 # TODO: Refactor because this looks horrible
 # TODO: try-except
-# TODO: Structure the values in pandas
-# import pandas as pd
-pd.DataFrame(nut_facts['totalNutrients'])
-pd.DataFrame(nut_facts['totalNutrients']).transpose()
-# Transport to CSV in directory
-trans = pd.DataFrame(nut_facts['totalNutrients']).transpose()
-trans.to_csv('nut_facts.csv')
-
-trans = pd.DataFrame.from_dict(data)
-trans.to_csv('egg_macros_test.csv')
