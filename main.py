@@ -88,9 +88,12 @@ def transport_df_to_csv(data):
     trans = pd.DataFrame.from_dict(data)
     file_name = input('Name your .csv file: ')
     trans.to_csv(f'{file_name}.csv')
+    return f'{file_name}.csv'
 
 
 transport_df_to_csv(macro_data)
 
 # TODO: Refactor because this looks horrible
 # TODO: try-except
+# TODO: simple route - requirements.txt with all modules installed, then users can do a pip install -r requirements.txt
+# or TODO: recommended use setup.py
