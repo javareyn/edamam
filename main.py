@@ -32,13 +32,18 @@ def fetch_response():
 
             recipe = {
                 'title': input('What is the title of your dish? '),
-                'ingr': [item for item in
-                         input('Please enter your items separated by a comma: ').split(',')]
+                'ingr': [
+                    item for item in
+                    input('Please enter your items separated by a comma: ')
+                    .split(',')
+                ]
             }
 
-            # url = f'{BASE_URL}{NUTRITION_POST_ENDPOINT}?app_id={NUTRITION_APP_ID}&app_key={NUTRITION_APP_KEY}'
-
-            post_response = requests.post(create_url(NUTRITION_POST_ENDPOINT), headers=headers, json=recipe)
+            post_response = requests.post(
+                create_url(NUTRITION_POST_ENDPOINT),
+                headers=headers,
+                json=recipe
+            )
 
             nut_facts = post_response.json()
 
@@ -47,7 +52,8 @@ def fetch_response():
             print(json.dumps(nut_facts['totalNutrients']['SUGAR'], indent=4))
         elif user_input == '2':
             food = input('Which food would you like nutritional analysis for: ')
-            url = f'{create_url(NUTRITION_GET_ENDPOINT)}&nutrition-type=logging&ingr={food}'
+            url = f'{create_url(NUTRITION_GET_ENDPOINT)}' \
+                  f'&nutrition-type=logging&ingr={food}'
             response = requests.get(url)
             print(response.json())
         else:
