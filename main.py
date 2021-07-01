@@ -51,7 +51,8 @@ def fetch_response():
             print(nut_facts.keys())
             print(json.dumps(nut_facts['totalNutrients']['SUGAR'], indent=4))
         elif user_input == '2':
-            food = input('Which food would you like nutritional analysis for: ')
+            food = \
+                input('Which food would you like nutritional analysis for: ')
             url = f'{create_url(NUTRITION_GET_ENDPOINT)}' \
                   f'&nutrition-type=logging&ingr={food}'
             response = requests.get(url)
