@@ -1,5 +1,6 @@
 import sqlite3
 
+
 CREATE_MACROS_TABLE = 'CREATE TABLE IF NOT EXISTS macros (' \
                       'id INTEGER PRIMARY KEY,' \
                       'label VARCHAR(255),' \
