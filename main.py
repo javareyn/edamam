@@ -143,5 +143,3 @@ save_dataset_to_file(database_name, table_name, filename, macro_df)
 # TODO: try-except
 # TODO: simple route - requirements.txt with all modules installed, then users can do a pip install -r requirements.txt
 # or TODO: recommended use setup.py
-
-# this is a test
