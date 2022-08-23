@@ -7,8 +7,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 
-NUTRITION_APP_ID = 'a409daa4'
-NUTRITION_APP_KEY = 'ca9c243e5f2d70cff4d6a4997ea55d83'
+NUTRITION_APP_ID = {}
+NUTRITION_APP_KEY = {}
 BASE_URL = 'https://api.edamam.com'
 NUTRITION_GET_ENDPOINT = '/api/nutrition-data'
 NUTRITION_POST_ENDPOINT = '/api/nutrition-details'
